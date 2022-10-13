@@ -1,2 +1,2 @@
-# applied-ecx
-Repo for the applied econometrics course at HU Berlin
+# Welcome to Applied Econometrics @ HU
+This is the code repository for the applied econometrics course at HU Berlin.
