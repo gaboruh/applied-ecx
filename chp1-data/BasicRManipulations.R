@@ -59,14 +59,14 @@ wide_matrix <- rbind(first_vector, second_vector); long_matrix
 
 #functions
 
-first_element <- function(a, b) {
+FirstElement <- function(a, b) {
   u <- c(NA, NA)
   u[1] <- a[1]
   u[2] <- a[2]
-  u
+  return(u)
 }
 
-first_element(first_vector, second_vector)
+FirstElement(first_vector, second_vector)
 
 typeof(c("ponyhof"))
 
