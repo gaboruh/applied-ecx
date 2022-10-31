@@ -35,7 +35,7 @@ abline(a = 3, b=0.5, col="blue")
 
 ggplot(data = anscombe, aes(x = x1, y=y1)) +
   geom_point() + 
-  geom_abline(a = 3, b=0.5) + 
+  geom_abline(intercept = 3, slope=0.5) + 
   geom_rug()
 
 library(datasauRus)
