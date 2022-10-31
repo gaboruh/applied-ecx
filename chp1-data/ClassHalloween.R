@@ -1,4 +1,4 @@
-library(ggplo2t)
+library(ggplot2)
 library(datasauRus)
 
 
@@ -25,9 +25,41 @@ if(length(first_vector) == length(second_vector)){
 
 data(anscombe)
 
+summary(lm(anscombe$y1 ~ anscombe$x1))
+
 plot(anscombe$x1, anscombe$y1,
   main="Scatterplot of the first anscombe pair", 
   xlab = "X1 values",
   ylab = "Y1 values")
 abline(a = 3, b=0.5, col="blue")
 
+ggplot(data = anscombe, aes(x = x1, y=y1)) +
+  geom_point() + 
+  geom_abline(a = 3, b=0.5) + 
+  geom_rug()
+
+library(datasauRus)
+data(datasaurus_dozen)
+summary(datasaurus_dozen)
+head(datasaurus_dozen)
+tail(datasaurus_dozen)
+
+dinodata <- subset(datasaurus_dozen, dataset == "dino")
+
+#alternatives:
+dinodata_alt <- datasaurus_dozen[datasaurus_dozen$dataset=="dino", ]
+
+
+ggplot(data = dinodata, aes(x = x, y=y))+
+  ggtitle("What do you see?")+
+  geom_point()
+
+summary(lm(y ~ x, data = dinodata))
+
+otherdata <- subset(datasaurus_dozen, dataset=="wide_lines")
+
+summary(lm(y~x, data = otherdata))
+
+ggplot(data = otherdata, aes(x = x, y=y))+
+  ggtitle("What do you see?")+
+  geom_point()
