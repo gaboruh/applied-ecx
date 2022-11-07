@@ -32,3 +32,15 @@ summary(hotel_vienna)
 library(DataExplorer)
 create_report(hotel_vienna)
 
+ggplot(hotel_vienna, aes(x=accommodation_type, y=price)) +
+  geom_boxplot()
+
+ggplot(hotel_vienna, aes(x=accommodation_type, y=price))+
+  geom_violin()+
+  geom_jitter()
+
+hotel_vienna_hot <- hotel_vienna[accommodation_type=="Hotel", ]
+
+hotel_vienna_hot <- hotel_vienna_hot[!is.na(hotel_vienna_hot),]
+
+cor(hotel_vienna_hot$price, hotel_vienna_hot$distance)
