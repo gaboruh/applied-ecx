@@ -14,7 +14,21 @@ library(data.table)
 hotels_europe_price <- fread(paste0(data_repo,"/hotels-europe_price.csv"))
 hotels_europe_features <- fread(paste0(data_repo, "/hotels-europe_features.csv"))
 
+summary(hotels_europe_price)
+summary(hotels_europe_features)
 
+hotel_data <- merge(hotels_europe_features, 
+                    hotels_europe_price, 
+                    by = "hotel_id")
 
+head(hotel_data)
 
+summary(hotel_data)
+
+hotel_vienna <- hotel_data[(year == 2017 & month == 11 & city == "Vienna" & weekend == 0), ]
+
+summary(hotel_vienna)
+
+library(DataExplorer)
+create_report(hotel_vienna)
 
