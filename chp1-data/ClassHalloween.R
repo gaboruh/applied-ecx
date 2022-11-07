@@ -46,6 +46,12 @@ tail(datasaurus_dozen)
 
 dinodata <- subset(datasaurus_dozen, dataset == "dino")
 
+sd(dinodata$y)
+
+head(datasaurus_dozen)
+
+unique(datasaurus_dozen$dataset)
+
 #alternatives:
 dinodata_alt <- datasaurus_dozen[datasaurus_dozen$dataset=="dino", ]
 
@@ -63,3 +69,13 @@ summary(lm(y~x, data = otherdata))
 ggplot(data = otherdata, aes(x = x, y=y))+
   ggtitle("What do you see?")+
   geom_point()
+
+summary(datasaurus_dozen)
+unique(datasaurus_dozen$dataset)
+datasaurus_dozen_wide
+
+head(datasaurus_dozen_wide)
+ld <- dim(subset(datasaurus_dozen, dataset == "dino"))
+ld <- ld[1]
+
+
