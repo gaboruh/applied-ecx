@@ -71,8 +71,16 @@ plot(hist(bootstrap_pop))
 
 boot_averages <- colSums(bootstrap_samples)/dim(bootstrap_samples)[1]
 
+weird_fun <- function(data){
+  outcome <- var(data) + sum(data^3) - mean(exp(data))
+}
+
 boot_var <- apply(bootstrap_samples, 2, var)
 plot(hist(boot_var))
+
+boot_weirdfun <- apply(bootstrap_samples, 2, weird_fun)
+#
+plot(hist(boot_weirdfun))
 
 # boot_averages_alt <- apply(bootstrap_samples, 2, mean)
 
@@ -85,6 +93,8 @@ CI_upper <- mean(bootstrap_pop) + 1.96 * sd(boot_averages)
 
 library(bcaboot)
 ci_bc <- bcajack(bootstrap_pop, 1599, mean)
+
+
 #is.data.table(hotel_data)
 
 bcaplot(ci_bc)
