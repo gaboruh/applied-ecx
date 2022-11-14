@@ -55,14 +55,15 @@ B <- 1299 #number of bootstrap replications
 
 bootstrap_fun <- function(data, bootrep){
   bootoutcome <- matrix(NA, nrow=length(data), ncol = bootrep)
-  randmatrix <- matrix(sample.int(length(data), size = length(data)*bootrep, replace = T), nrow=length(data), ncol=bootrep)
+  randmatrix <- matrix(sample.int(length(data), size = length(data)*bootrep, replace = T), 
+                       nrow=length(data), ncol=bootrep)
   for (i in 1:bootrep){
     bootoutcome[ ,i] <- data[randmatrix[,i]]
   }
-  
-  
+  return(bootoutcome)
 }
 
+bootstrap_samples <- bootstrap_fun(bootstrap_pop, B)
 
 
 
