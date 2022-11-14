@@ -44,3 +44,27 @@ hotel_vienna_hot <- hotel_vienna[accommodation_type=="Hotel", ]
 hotel_vienna_hot <- hotel_vienna_hot[!is.na(hotel_vienna_hot),]
 
 cor(hotel_vienna_hot$price, hotel_vienna_hot$distance)
+
+head(hotel_vienna_hot$price)
+plot(hist(hotel_vienna_hot$price))
+
+avg_price <-sum(hotel_vienna_hot$price)/length(hotel_vienna_hot$price)
+
+bootstrap_pop <- hotel_vienna_hot$price
+B <- 1299 #number of bootstrap replications
+
+bootstrap_fun <- function(data, bootrep){
+  bootoutcome <- matrix(NA, nrow=length(data), ncol = bootrep)
+  randmatrix <- matrix(sample.int(length(data), size = length(data)*bootrep, replace = T), nrow=length(data), ncol=bootrep)
+  for (i in 1:bootrep){
+    bootoutcome[ ,i] <- data[randmatrix[,i]]
+  }
+  
+  
+}
+
+
+
+
+
+
