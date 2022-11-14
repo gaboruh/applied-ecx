@@ -58,13 +58,36 @@ bootstrap_fun <- function(data, bootrep){
   randmatrix <- matrix(sample.int(length(data), size = length(data)*bootrep, replace = T), 
                        nrow=length(data), ncol=bootrep)
   for (i in 1:bootrep){
-    bootoutcome[ ,i] <- data[randmatrix[,i]]
+    bootoutcome[ ,i] <- data[randmatrix[ ,i]]
   }
   return(bootoutcome)
 }
 
 bootstrap_samples <- bootstrap_fun(bootstrap_pop, B)
 
+plot(hist(bootstrap_samples[,6]))
+
+plot(hist(bootstrap_pop))
+
+boot_averages <- colSums(bootstrap_samples)/dim(bootstrap_samples)[1]
+
+boot_var <- apply(bootstrap_samples, 2, var)
+plot(hist(boot_var))
+
+# boot_averages_alt <- apply(bootstrap_samples, 2, mean)
+
+plot(hist(boot_averages))
+
+sd(boot_averages)
+#CI_basic <- [mean(bootstrap_pop) - 1.96*sd(boot_averages); ]
+CI_lower <- mean(bootstrap_pop) - 1.96 * sd(boot_averages)
+CI_upper <- mean(bootstrap_pop) + 1.96 * sd(boot_averages)
+
+library(bcaboot)
+ci_bc <- bcajack(bootstrap_pop, 1599, mean)
+#is.data.table(hotel_data)
+
+bcaplot(ci_bc)
 
 
 
