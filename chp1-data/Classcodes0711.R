@@ -30,7 +30,7 @@ hotel_vienna <- hotel_data[(year == 2017 & month == 11 & city == "Vienna" & week
 summary(hotel_vienna)
 
 library(DataExplorer)
-create_report(hotel_vienna)
+#create_report(hotel_vienna)
 
 ggplot(hotel_vienna, aes(x=accommodation_type, y=price)) +
   geom_boxplot()
