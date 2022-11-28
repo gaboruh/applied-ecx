@@ -79,3 +79,8 @@ hotel_vienna_hot <- cbind(hotel_vienna_hot, distsq = hotel_vienna_hot$distance^2
 
 reg_quad <- lm(price ~ distance + distsq , data= hotel_vienna_hot)
 summary(reg_quad)
+
+ggplot(hotel_vienna_hot, aes(x = distance, y= price)) +
+  geom_point()+
+  geom_smooth(method=loess, se=F)
+
