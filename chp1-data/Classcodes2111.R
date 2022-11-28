@@ -6,6 +6,10 @@
 reg1 <- lm(price ~ distance, data = hotel_vienna_hot)
 summary(reg1)
 
+library(ggplot2)
+
+quickplot(x= hotel_vienna_hot$distance, y= hotel_vienna_hot$price)
+
 plot(x= hotel_vienna_hot$distance, y= reg1$residuals)
 
 install.packages("sandwich")
@@ -69,3 +73,9 @@ summary(reg_loglog)
 ggplot(hotel_vienna_hot[-75], aes(x = log(distance), y = log(price)))+
   geom_point()+
   geom_abline(slope = reg_loglog$coefficients[2], intercept= reg_loglog$coefficients[1], col="red")
+
+
+hotel_vienna_hot <- cbind(hotel_vienna_hot, distsq = hotel_vienna_hot$distance^2)
+
+reg_quad <- lm(price ~ distance + distsq , data= hotel_vienna_hot)
+summary(reg_quad)
