@@ -19,4 +19,18 @@ hist(reg_lpm$fitted.values)
 
 reg_logit <- glm(model_formula, family=binomial(link="logit"), data = mroz)
 
+reg_probit <- glm(model_formula, family=binomial(link="probit"), data=mroz)
+
+min(reg_probit$fitted.values)
+max(reg_probit$fitted.values)
+
+summary(reg_probit)
+
+#multiply probit coefficients by 1.6 -> get approxiamte logit coeffs.
+
+library(mfx)
+
+logitmfx(model_formula, data = mroz)
+probitmfx(model_formula, data = mroz)
+
 summary(reg_logit)
