@@ -68,3 +68,16 @@ mean(gdot) *reg_logit$coefficients[3]
 
 
 logitmfx(model_formula, data =mroz)
+
+
+#Mcfadden's R squared by hand
+
+Rsq <- 1-(logLik(reg_logit)/logLik(glm(inlf ~ 1, data = mroz, family=binomial(link="logit") ))
+
+reg_logit2 <- glm(inlf ~ nwifeinc + educ + exper + expersq + age, family=binomial(link="logit"), data = mroz)
+          
+Rsq2 <-  1-(logLik(reg_logit2)/logLik(glm(inlf ~ 1, data = mroz, family=binomial(link="logit") ))
+     
+# Tip from Jose: use the DescTools package, and calculate the same            
+PseudoR2(reg_logit2, which="McFadden")              
+            
