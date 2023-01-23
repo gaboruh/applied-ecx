@@ -64,12 +64,13 @@ auto.arima(sp500[,2]) #AICC criterion to select lag order;
 plot(forecast(auto.arima(sp500[,2])))
 
 #library(forecast)
-plot(forecast(auto.arima(ts_remainder, order=c(1,1))))
+plot(forecast(auto.arima(ts_remainder)))
 
 plot(forecast(arima(ts_remainder, order=c(1,0,1)))
 )
 
-
+acf(ts_remainder)
+pacf(ts_remainder)
 
 
 
