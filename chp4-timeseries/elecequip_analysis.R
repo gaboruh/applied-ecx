@@ -63,5 +63,14 @@ auto.arima(sp500[,2]) #AICC criterion to select lag order;
 # treats missing values automatically. Kalman filter methods to impute missing values.
 plot(forecast(auto.arima(sp500[,2])))
 
+#library(forecast)
+plot(forecast(auto.arima(ts_remainder, order=c(1,1))))
 
-         
+plot(forecast(arima(ts_remainder, order=c(1,0,1)))
+)
+
+
+
+
+
+
