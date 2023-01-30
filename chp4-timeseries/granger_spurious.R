@@ -19,3 +19,27 @@ for(t in 2:n){
 for(t in 2:n){
   y[t] <- y[t-1] + epsy[t]
 }
+
+
+plot(y, type='l')
+
+dy <- diff(y)
+dx <- diff(x)
+
+library(urca)
+
+plot(dy, type='l')
+plot(dx, type='l')
+
+summary(ur.ers(x))
+summary(ur.ers(y))
+
+summary(ur.ers(dx)) #REject the null of non-stationarity at 1%
+summary(ur.ers(dy)) #Reject the null of non-stationarity at 1 % level.
+
+library(lmtest)
+
+grangertest(dx,dy)
+#We cannot reject the null hypothesis that the first lag of dx
+# does not help forecast dy. -> We cannot reject the null hypothesis
+# of dx not (!!!) Granger-causing dy. (-> dx does not granger cause dy).S
