@@ -43,3 +43,15 @@ grangertest(dx,dy)
 #We cannot reject the null hypothesis that the first lag of dx
 # does not help forecast dy. -> We cannot reject the null hypothesis
 # of dx not (!!!) Granger-causing dy. (-> dx does not granger cause dy).S
+
+grangertest(dy,dx)
+
+plot(x, type='l')
+
+summary(lm(y~x))
+summary(lm(x~y))
+summary(lm(chicken ~ egg, data = ChickEgg)) #Don't do this.
+#Spurious regression!!
+
+summary(lm(dy~dx))
+summary(lm(dx~dy))
